@@ -4,6 +4,8 @@
 
 This report describes how the multiplayer server of **Seolwongyeong**, a ski metaverse ([ski.stelide.com](https://ski.stelide.com)), was load-tested and optimized. It was written on November 14, 2026. The Korean original is in [README.md](README.md).
 
+**Research report** · [English PDF](paper/multiplayer-perf-report.en.pdf) · [한글 PDF](paper/multiplayer-perf-report.ko.pdf) · [LaTeX sources](paper/README.md)
+
 ## Contents
 
 - [Summary](#summary)

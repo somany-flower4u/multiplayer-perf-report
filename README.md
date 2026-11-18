@@ -6,6 +6,8 @@
 
 > English summary: a load-test report for the multiplayer server of the Seolwongyeong ski metaverse. The production server (Oracle Ampere, 2 cores) held 700 concurrent players with a p99 position latency of 114 ms and was saturated at 800. The report covers the test method, four optimizations, production results, and next steps. The full English text is in [README.en.md](README.en.md).
 
+**학술 보고서** · [한글 PDF](paper/multiplayer-perf-report.ko.pdf) · [English PDF](paper/multiplayer-perf-report.en.pdf) · [LaTeX 원고](paper/README.md)
+
 ## 목차
 
 - [요약](#요약)
@@ -143,7 +145,7 @@ Go 중계로 바꾼 본서버는 700명까지 원활했다(p99 114ms, 초당 갱
 
 어느 단계에서도 접속이 끊기거나 방 입장이 거절되지는 않았다. 한계를 넘으면 서버는 접속을 끊지 않고 늦게 보낸다. 그 대신 800명부터 한 명이 받는 양이 13\~21% 줄었고, 1,000명 이상에서는 절반 가까이로 줄었다.
 
-한 명당 비용은 Go 중계가 약 0.14%, nginx가 약 0.10%였다. 나머지는 커널의 네트워크 처리다. nginx가 중계 프로그램의 70% 정도를 더 쓰는 셈이다.
+한 명당 비용은 Go 중계가 약 0.14%, nginx가 약 0.10%였다. 나머지는 커널의 네트워크 처리다. nginx는 중계 프로그램의 약 70%만큼 CPU를 썼다.
 
 파이썬 서버는 0\~1%로 거의 일하지 않았다. 가짜 플레이어가 게스트라 로그인 확인과 기록 전달이 없었기 때문이다. 하네스 두 대의 CPU는 1,200명에서도 66\~72%여서, 한계는 하네스가 아니라 서버 쪽이었다.
 

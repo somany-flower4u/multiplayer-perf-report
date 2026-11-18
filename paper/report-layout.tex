@@ -1,0 +1,110 @@
+\usepackage[margin=20mm, top=19mm, bottom=20mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{texgyrepagella}[
+  Extension=.otf, UprightFont=*-regular, ItalicFont=*-italic,
+  BoldFont=*-bold, BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[
+  Extension=.otf, UprightFont=*-regular, ItalicFont=*-italic,
+  BoldFont=*-bold, BoldItalicFont=*-bolditalic]
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+\usepackage{booktabs, tabularx}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[unicode]{hyperref}
+
+\definecolor{accent}{HTML}{204E77}
+\definecolor{muted}{HTML}{455464}
+\definecolor{rulegray}{HTML}{CAD3DC}
+\hypersetup{colorlinks=true, linkcolor=accent, citecolor=accent, urlcolor=accent}
+\urlstyle{same}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt plus 1pt}
+\linespread{1.05}
+\raggedbottom
+\clubpenalty=10000
+\widowpenalty=10000
+\setlist{topsep=2pt, itemsep=2pt, parsep=0pt, leftmargin=1.65em}
+\setlength{\textfloatsep}{14pt plus 2pt minus 3pt}
+\setlength{\intextsep}{12pt plus 2pt minus 2pt}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.25}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\captionsetup{font=small, labelfont=bf, labelsep=period, justification=raggedright,
+  singlelinecheck=false, skip=7pt}
+\AddToHook{env/thebibliography/begin}{\small\raggedright}
+
+\titleformat{\section}{\Large\sffamily\bfseries\color{accent}}{\thesection}{0.65em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection}{0.65em}{}
+\titlespacing*{\section}{0pt}{15pt plus 2pt minus 2pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt plus 2pt minus 2pt}{3pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\fancyfoot[L]{\sffamily\small\color{muted}\ReportFooter}
+\fancyfoot[R]{\sffamily\small\color{muted}\thepage}
+
+\newcommand{\ReportTitle}[3]{%
+  {\sffamily\bfseries\small\color{accent}#1\par}
+  \vspace{5pt}
+  {\sffamily\bfseries\fontsize{22}{27}\selectfont\raggedright #2\par}
+  \vspace{4pt}
+  {\sffamily\small\color{muted}#3\par}
+  \vspace{2pt}
+  {\color{rulegray}\hrule}
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\change}[2]{#1 \(\to\) #2}
+
+\newcommand{\ReportFigure}[3]{%
+  \par\medskip
+  \noindent\begin{minipage}{\linewidth}
+    \captionsetup{type=figure}
+    \includegraphics[width=\linewidth]{#1}\par
+    \caption{#2}
+    \label{#3}
+  \end{minipage}\par
+}
+
+\newcommand{\DeltaRows}{%
+   50 & \change{62.5}{27.6} & \change{3.05}{1.35} \\
+  100 & \change{65.3}{28.9} & \change{6.38}{2.82} \\
+  200 & \change{70.8}{28.4} & \change{13.83}{5.54} \\
+  400 & \change{54.5}{23.4} & \change{21.30}{9.14} \\
+}
+
+\newcommand{\UbuntuRows}{%
+    400 &  47\% & 14.5 & 40 / 74 \\
+    800 & 100\% & 13.6 & 49 / 91 \\
+  1,000 & 133\% & 11.8 & 55 / 103 \\
+  1,200 & 125\% &  7.8 & 161 / 237 \\
+}
+
+\newcommand{\StageRows}{%
+  100 & 14.5 / 71  & 15.0 / 71  & \change{19\%}{11\%} \\
+  200 & 14.0 / 77  & 15.0 / 74  & \change{37\%}{19\%} \\
+  400 & 10.8 / 296 & 15.0 / 78  & \change{63\%}{33\%} \\
+  800 &  8.0 / 725 & 15.0 / 325 & \change{71\%}{48\%} \\
+}
+
+\newcommand{\ProductionRows}{%
+    200 & 15.0 & 39 / 75          & 71\%          & 30\%         & 26\% \\
+    400 & 15.0 & 49 / 85          & 113\%         & 58\%         & 47\% \\
+    600 & 15.0 & 52--53 / 95--98  & 158--161\%    & 87--90\%     & 63--65\% \\
+    700 & 15.0 & 57 / 114         & 180\%         & 101\%        & 73\% \\
+    800 & 15.0 & 75--101 / 163--275 & 189--197\%  & 90--108\%    & 87--94\% \\
+  1,000 & 12.7 & 237 / 3,467      & 197\%         & 100\%        & 91\% \\
+  1,200 & 14.3 & 445 / 1,309      & 200\%         & 92\%         & 91\% \\
+}
