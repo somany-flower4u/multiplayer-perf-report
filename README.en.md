@@ -1,8 +1,23 @@
 # Seolwongyeong Multiplayer Performance and Traffic Optimization Report
 
-[한국어](README.md)
+[한국어](README.md) | English
 
-November 14, 2026
+This report describes how the multiplayer server of **Seolwongyeong**, a ski metaverse ([ski.stelide.com](https://ski.stelide.com)), was load-tested and optimized. It was written on November 14, 2026. The Korean original is in [README.md](README.md).
+
+## Contents
+
+- [Summary](#summary)
+- [Architecture](#architecture)
+- [Method](#method)
+- [Optimization steps](#optimization-steps)
+  - [1. Send only changed fields](#1-send-only-changed-fields)
+  - [2. File handle leak](#2-file-handle-leak)
+  - [3. Connection limit of 2,000](#3-connection-limit-of-2000)
+  - [4. The Python GIL and the Go relay](#4-the-python-gil-and-the-go-relay)
+- [Production results (Nov 14)](#production-results-nov-14)
+- [Pitfalls and limitations](#pitfalls-and-limitations)
+- [Next steps](#next-steps)
+- [License](#license)
 
 ## Summary
 
@@ -169,3 +184,7 @@ Options we considered and rejected:
 | WebSocket compression (permessage-deflate) | Fewer bytes, but more CPU, which is the current bottleneck |
 
 Still to measure: capacity over the real TLS path, and a rerun after step 1.
+
+## License
+
+This report is licensed under [CC BY 4.0](LICENSE).

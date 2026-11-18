@@ -1,8 +1,25 @@
 # 설원경 멀티플레이 성능 및 트래픽 최적화 보고서
 
-[English](README.en.md)
+[English](README.en.md) | 한국어
 
-2026년 11월 14일
+메타버스 스키장 **설원경**([ski.stelide.com](https://ski.stelide.com))의 멀티플레이 서버를 부하 시험으로 재고 고친 과정을 정리한 보고서입니다. 작성일은 2026년 11월 14일입니다.
+
+> English summary: a load-test report for the multiplayer server of the Seolwongyeong ski metaverse. The production server (Oracle Ampere, 2 cores) held 700 concurrent players with a p99 position latency of 114 ms and was saturated at 800. The report covers the test method, four optimizations, production results, and next steps. The full English text is in [README.en.md](README.en.md).
+
+## 목차
+
+- [요약](#요약)
+- [시스템 구조](#시스템-구조)
+- [측정 방법](#측정-방법)
+- [최적화 과정](#최적화-과정)
+  - [1. 바뀐 칸만 보내기](#1-바뀐-칸만-보내기)
+  - [2. 파일 핸들 누수](#2-파일-핸들-누수)
+  - [3. 접속 한도 2,000명](#3-접속-한도-2000명)
+  - [4. 파이썬 GIL과 Go 중계](#4-파이썬-gil과-go-중계)
+- [본서버 실측 (11월 14일)](#본서버-실측-11월-14일)
+- [측정하면서 겪은 문제와 한계](#측정하면서-겪은-문제와-한계)
+- [앞으로의 계획](#앞으로의-계획)
+- [라이선스](#라이선스)
 
 ## 요약
 
@@ -169,3 +186,7 @@ Go 중계로 바꾼 본서버는 700명까지 원활했다(p99 114ms, 초당 갱
 | WebSocket 압축(permessage-deflate) | 바이트는 줄지만 CPU를 더 써서 지금의 병목을 키운다 |
 
 아직 남은 측정은 TLS가 포함된 실제 경로에서의 한계 인원, 그리고 1번을 적용한 뒤의 재측정이다.
+
+## 라이선스
+
+이 보고서는 [CC BY 4.0](LICENSE) 라이선스를 따릅니다.
